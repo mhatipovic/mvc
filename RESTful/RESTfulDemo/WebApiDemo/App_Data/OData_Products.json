@@ -1,0 +1,40 @@
+{
+  "@odata.context": "http://services.odata.org/V4/OData/(S(2ngrgnheqx0ziw1ksk040jrp))/OData.svc/$metadata",
+  "value": [
+    {
+      "name": "Products",
+      "kind": "EntitySet",
+      "url": "Products"
+    },
+    {
+      "name": "ProductDetails",
+      "kind": "EntitySet",
+      "url": "ProductDetails"
+    },
+    {
+      "name": "Categories",
+      "kind": "EntitySet",
+      "url": "Categories"
+    },
+    {
+      "name": "Suppliers",
+      "kind": "EntitySet",
+      "url": "Suppliers"
+    },
+    {
+      "name": "Persons",
+      "kind": "EntitySet",
+      "url": "Persons"
+    },
+    {
+      "name": "PersonDetails",
+      "kind": "EntitySet",
+      "url": "PersonDetails"
+    },
+    {
+      "name": "Advertisements",
+      "kind": "EntitySet",
+      "url": "Advertisements"
+    }
+  ]
+}

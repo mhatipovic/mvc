@@ -1,0 +1,17 @@
+﻿@*@model MyFirstProject.Models.Student*@
+@*@model MyFirstProject.Models.Student*@
+@*@model IEnumerable<MyFirstProject.Models.Course_Students>*@
+@model IEnumerable<MyFirstProject.Models.Student>
+
+@{
+    ViewBag.Title = "Abc Page Title";
+}
+
+<h2>This is Abc.cshtml page under Views/Xyz folder</h2>
+@*<h2>@Model.FirstName was first name and <br /> @Model.LastName was the last name</h2>*@
+
+@foreach (var s in Model)
+{
+<h3>Student name: @s.FirstName @s.LastName - gender: @s.Gender - (enr. date:</h3>
+}
+

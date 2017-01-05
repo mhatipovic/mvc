@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+
+    <input type="button" id="btnLoc" value="get local json" onclick="emp();" />
+    <ul id="ul_emp"></ul><br />
+    <input type="button" id="btnLoc" value="add employee" onclick="addEmp();" />
+    <input type="text" id="fName" />&nbsp;&nbsp;<input type="text" id="lName" />
+    <script>
+        var $fn = $('"fName');
+        var $ln = $('"lName');
+        function emp() {
+            $.ajax({
+                url: 'http://localhost:21369/Scripts/loc.json',
+                dataType: 'json',
+                type: 'get',
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    $.each(data.employees, function (k, v) {
+                        $("#ul_emp").append("<li>" + v.firstName+" - "+v.lastName + "</li>");
+                    });
+                },
+                error: function () { alert('error loading emps');}
+
+            });
+        }
+
+        function addEmp() {
+            var newEmp = {};
+            newEmp = {
+                fName: $fn.val(),
+                lName: $ln.val()
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:21369/Scripts/loc.json',
+                data: newEmp,
+                success: function (newEmp) {
+                    $("#ul_emp").append("<li>" + newEmp.firstName + " - " + newEmp.lastName + "</li>");
+                },
+                error: function () { alert('error posting emps'); }
+            });
+        }
+    </script>
+</body>
+</html>

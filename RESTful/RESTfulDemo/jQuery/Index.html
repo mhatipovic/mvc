@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" /><style>.special{color:orangered;}</style>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$("#btn11").hide(2700).show(2550);
+            //$("#td11").slideUp(2333).slideDown(2555);
+            //$("#td22").css({ fontWeight: 'bold' }); $("#tbl").css({ fontFamily:'verdana' });
+            //$("#panel13").html('jQuery:panel13'); 
+            $('li').on('click', function () {
+                if($(this).is('.special'))
+                {alert('special');}
+            });
+        });
+    </script>
+</head>
+<body>
+        <div id="container">
+            <table id="tbl" border="1" width="755" height="466">
+                <tr id="tr1">
+                    <td id="td11" valign="top">td 11<br /><input type="button" id="btn11" value="btn 11" width="333"/></td>
+                    <td id="td12" valign="top">td 12<br /><br /><div id="panel12" style="border:solid;text-align:center">panel12</div></td>
+                    <td id="td13" valign="top">td 13<br /><br /><div id="panel13" style="border:solid;text-align:center">panel13</div></td>
+                </tr>
+                <tr id="tr2">
+                    <td id="td21" valign="top">td 21<br /><ul class="list"><li>one</li><li class="special">two</li><li>three</li>
+                        <li><ul class="sublist"><li>1</li><li>2</li><li>3</li><li>4</li></ul></li></ul></td>
+                    <td id="td22">td 22</td>
+                    <td id="td23">td 23</td>
+                </tr>
+            </table>
+
+        </div>
+</body>
+</html>

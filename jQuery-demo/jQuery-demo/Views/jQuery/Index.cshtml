@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
+
+
+<h3>jQuery Index</h3>
+<div id="wrapper">
+    <p id="p_1">paragraph one</p>
+    <p id="p_2">paragraph two <i>italics</i></p>
+    <div><table><tr><td valign="top">
+    <em>
+        Emphasized text between 'em' tags<br />second line<br />third line<br />fourth line
+    </em><ul><li>list item 1</li><li>list item 2</li><li>list item 3</li><li>list item 4</li></ul>
+        <input type="text" id="keyPressed" /></td>
+        <td valign="top">
+    <img id="gogh" src="~/Content/themes/base/images/600_quota-great-fire-burns-within-me.jpg" width="200" style="float:right" />
+</td><td valign="top"> third td
+         <img id="dumb" src="~/Content/themes/base/images/dd-4.jpg" width="111" />  </td></tr></table>        
+    </div>
+<script type="text/javascript">
+    $("document").ready(function(){
+        $("#wrapper").css("width", 800);
+        $("#p_2").css("background-color", "lightgreen");
+        $("#p_1").css("color", "purple");
+        //alert($("p:has(i)").html());
+        $(document).keypress(function (e) {
+            var keyPressed = String.fromCharCode(e.which);
+            $("#keyPressed").val(keyPressed);
+        });
+
+    }); 
+
+</script>
+</div>

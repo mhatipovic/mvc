@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>City App</title>
+</head>
+<body>
+
+    <div>
+        <h2>All Cities</h2>
+        <ul id="cities" />
+    </div>
+    <div>
+        <h2>Search by ID</h2>
+        <input type="text" id="cityId" size="5" /><br /><input type="button" value="Search" onclick="find();" />
+        <input type="text" id="newCity" /><input type="button" id="btnPost" value="post" onclick="newCity();"/><br />
+        <input type="text" id="txtPutCity" /><input type="button" id="btnPut" value="put" onclick="putCity();" />
+        <p id="city" />
+    </div>
+    <div><input type="button" id="btnLoc" value="local file" onclick="loc();" /> <ul id="seattle"><li>one</li></ul></div>
+    
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <!--<script src="Scripts/City.js"></script>-->
+   <script src="Scripts/loc.json"></script>
+    <script>
+    var uri = 'api/cities';
+
+    function newCity() {
+        cit = new Object();
+        cit.Id = 13;
+        cit.Name = $("#newCity").val();
+        cit.Country = "fromCode";
+        $.ajax({
+            url: "api/cities/PostCity",
+            data: cit,
+            type: "POST",
+            success: function () {
+                alert("new cith added");
+            }
+        });
+    }
+    function putCity() {
+        var cityId = $.getJSON(uri + '/' + 13);
+        cit.Id = "api/cities/13";
+        cit.Name = $("#txtPutCity").val();
+        cit.Country = "putCountry";
+        $.ajax({
+            url: "api/cities/PutCity",
+            data: cit,
+            type: "PUT",
+            success: function () {
+                alert("city 13 updated");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+      // Send an AJAX request
+      $.getJSON(uri)
+          .done(function (data) {
+            // On success, 'data' contains a list of products.
+            $.each(data, function (key, item) {
+              // Add a list item for the product.
+              $('<li>', { text: formatItem(item) }).appendTo($('#cities'));
+            });
+          });
+    });
+
+    function formatItem(item) {
+      return item.Name + ': ' + item.Country;
+    }
+    function formatLoc(item) {
+        return item.firstName + ': ' + item.lastName;
+    }
+
+    function find() {
+      var id = $('#cityId').val();
+      $.getJSON(uri + '/' + id)
+          .done(function (data) {
+            $('#city').text(formatItem(data));
+          })
+          .fail(function (jqXHR, textStatus, err) {
+            $('#city').text('Error: ' + err);
+          });
+    }
+
+    function addCity() {
+        var newEmp = {};
+        newEmp = {
+            fName: $fn.val(),
+            lName: $ln.val()
+        };
+        $.ajax({
+            type: 'POST',
+            url: uri,
+            data: newCity,
+            success: function (newCity) {
+                $("#ul_emp").append("<li>" + newEmp.firstName + " - " + newEmp.lastName + "</li>");
+            },
+            error: function () { alert('error posting emps'); }
+        });
+    }
+    </script>
+</body>
+</html>

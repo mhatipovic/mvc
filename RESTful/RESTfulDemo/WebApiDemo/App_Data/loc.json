@@ -1,0 +1,14 @@
+{
+  "p1": {
+    "name": "Satish",
+    "age": 23,
+    "company": "Tata"
+  },
+
+  "p2": {
+    "name": "Kiran",
+    "age": 44,
+    "company": "Oracle"
+  }
+  
+}
